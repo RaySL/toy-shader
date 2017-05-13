@@ -3,3 +3,6 @@
 
 # Ignore bin directory
 bin
+
+#Ignore executable
+test
