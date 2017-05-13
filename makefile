@@ -1,7 +1,5 @@
-
 SOURCE_DIR := src
 BUILD_DIR := bin
-
 
 CC := g++ -c
 LD := g++
@@ -15,13 +13,21 @@ LDFLAGS := $(shell sdl2-config --libs) -lGL -lstdc++
 SRCS := $(call rwildcard,$(SOURCE_DIR)/,*.cpp)
 OBJS := $(addprefix $(BUILD_DIR)/, $(SRCS:$(SOURCE_DIR)/%.cpp=%.o))
 
-MAIN = $(BUILD_DIR)/test
+MAIN = test
 
-$(MAIN): $(OBJS)
+all: mkbin link
+
+mkbin:
+	mkdir -p $(BUILD_DIR)
+
+link: $(OBJS)
 	$(LD) -o $(MAIN) $^ $(LDFLAGS)
 
 $(BUILD_DIR)/%.o: $(SOURCE_DIR)/%.cpp $(wildcard $(SOURCE_DIR)/%.h)
 	$(CC) -o $@ $< $(CFLAGS)
 
 clean:
-	rm $(OBJS)
+	rm $(OBJS) $(MAIN)
+
+
+
