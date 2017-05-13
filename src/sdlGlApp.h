@@ -5,12 +5,11 @@
 
 #include <SDL2/SDL.h>
 
-#include <GL/gl.h>
-//#include <GL/glext.h>
-//#include <GL/glxext.h>
 
-//#define GL3_PROTOTYPES 1
-//#include <GL3/gl3.h>
+// This is platform dependant, you may need to change it
+#define GL3_PROTOTYPES 1
+#include <GLES3/gl3.h>
+
 
 class SDLGLApp {
 public:
